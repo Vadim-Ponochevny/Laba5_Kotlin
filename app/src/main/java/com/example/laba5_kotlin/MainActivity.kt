@@ -26,16 +26,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Timber.plant(Timber.DebugTree())
-
         photoParsing()
-
-
-
     }
 
     private fun photoParsing() {
         lifecycleScope.launch {
             try {
+
                 val photos = fetchPhotosFromApi()
 
                 val photoUrls = photos.map { photo ->
@@ -85,8 +82,4 @@ class MainActivity : AppCompatActivity() {
             emptyList()
         }
     }
-
-
-
-
 }
