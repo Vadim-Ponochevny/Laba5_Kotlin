@@ -35,8 +35,10 @@ class MainActivity : AppCompatActivity() {
 
                 val photos = fetchPhotosFromApi()
 
-                val photoUrls = photos.map { photo ->
-                    "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_z.jpg"
+                val photoUrls = mutableListOf<String>()
+                for (photo in photos) {
+                    val url = "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_z.jpg"
+                    photoUrls.add(url)
                 }
 
                 setupRecyclerView(photoUrls)
